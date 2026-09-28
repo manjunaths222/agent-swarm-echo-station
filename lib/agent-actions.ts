@@ -1,0 +1,11 @@
+import {z} from 'zod';
+const packetSchema=z.object({agent:z.enum(['nova','cipher','atlas','sage']),mode:z.enum(['team','single','independent']),tick:z.number(),unsharedDiscoveries:z.array(z.string()),inspectable:z.array(z.object({id:z.string(),inspected:z.boolean()})),station:z.object({power:z.boolean(),coolingSince:z.number().nullable(),authorized:z.boolean(),relays:z.array(z.string()),outage:z.boolean()})});
+export function actionMenu(packet:unknown){const p=packetSchema.parse(packet),s=p.station;const choices=p.inspectable.filter(o=>!o.inspected).map(o=>'inspect:'+o.id);if(p.mode==='team'&&p.unsharedDiscoveries.length)choices.push('share');
+ if(p.agent==='nova'&&s.outage&&!p.inspectable.some(o=>o.id==='M-03'&&!o.inspected))choices.push('repair');
+ if(p.agent==='atlas'&&!s.outage){if(!s.power){if(s.coolingSince===null)choices.push('cooling');else if(p.tick-s.coolingSince>=1)choices.push('power');}else if(!s.authorized)choices.push('authorize');}
+ if((p.agent==='nova'||p.agent==='atlas')&&s.power&&s.authorized&&!s.relays.includes(p.agent))choices.push('hold');
+ if(p.agent==='sage'&&s.power&&s.authorized&&s.relays.includes('nova')&&s.relays.includes('atlas'))choices.push('exit');
+ if(!choices.length)choices.push('wait');
+ return {choices,unshared:p.unsharedDiscoveries};
+}
+export function normalizeDecision(raw:unknown,menu:ReturnType<typeof actionMenu>){const d=z.object({choice:z.string(),code:z.string().optional(),message:z.string().max(420).optional()}).strict().parse(raw);if(!menu.choices.includes(d.choice))throw new Error('Unavailable action');if(d.choice.startsWith('inspect:'))return {type:'inspect' as const,target:d.choice.slice(8)};if(d.choice==='share')return {type:'share' as const,recipient:'team' as const,evidence:menu.unshared,message:d.message||'Sharing my discovered evidence with the team.'};if(d.choice==='wait')return {type:'wait' as const,message:d.message||'Waiting for new information or available controls.'};if(d.choice==='authorize'&&!/^\d{4}$/.test(d.code||''))throw new Error('Authorization needs a four-digit code from evidence');return {type:'operate' as const,target:d.choice==='authorize'?'authorize:'+d.code:d.choice};}

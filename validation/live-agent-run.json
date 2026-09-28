@@ -1,0 +1,4534 @@
+{
+  "backend": "ollama",
+  "model": "qwen3:4b",
+  "elapsedSeconds": 65.655,
+  "game": {
+    "seed": 1,
+    "mode": "team",
+    "tick": 24,
+    "turn": 24,
+    "phase": "escaped",
+    "known": {
+      "nova": [
+        "M-01",
+        "M-02",
+        "A-01",
+        "A-02",
+        "L-01",
+        "L-02"
+      ],
+      "cipher": [
+        "A-01",
+        "A-02",
+        "M-01",
+        "M-02",
+        "L-01",
+        "L-02"
+      ],
+      "atlas": [
+        "C-01",
+        "C-02",
+        "M-01",
+        "M-02",
+        "A-01",
+        "A-02",
+        "L-01",
+        "L-02"
+      ],
+      "sage": [
+        "L-01",
+        "L-02",
+        "M-01",
+        "M-02",
+        "A-01",
+        "A-02"
+      ]
+    },
+    "sent": {
+      "nova": [
+        "M-01",
+        "M-02"
+      ],
+      "cipher": [
+        "A-01",
+        "A-02"
+      ],
+      "atlas": [],
+      "sage": [
+        "L-01",
+        "L-02"
+      ]
+    },
+    "events": [
+      {
+        "id": 0,
+        "tick": 1,
+        "agent": "nova",
+        "type": "discovery",
+        "text": "Triangle circuit must activate before circle circuit.",
+        "evidence": [
+          "M-01"
+        ]
+      },
+      {
+        "id": 1,
+        "tick": 2,
+        "agent": "cipher",
+        "type": "discovery",
+        "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+        "evidence": [
+          "A-01"
+        ]
+      },
+      {
+        "id": 2,
+        "tick": 3,
+        "agent": "atlas",
+        "type": "discovery",
+        "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+        "evidence": [
+          "C-01"
+        ]
+      },
+      {
+        "id": 3,
+        "tick": 4,
+        "agent": "sage",
+        "type": "discovery",
+        "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+        "evidence": [
+          "L-01"
+        ]
+      },
+      {
+        "id": 4,
+        "tick": 5,
+        "agent": "nova",
+        "type": "discovery",
+        "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+        "evidence": [
+          "M-02"
+        ]
+      },
+      {
+        "id": 5,
+        "tick": 6,
+        "agent": "cipher",
+        "type": "discovery",
+        "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+        "evidence": [
+          "A-02"
+        ]
+      },
+      {
+        "id": 6,
+        "tick": 7,
+        "agent": "atlas",
+        "type": "discovery",
+        "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+        "evidence": [
+          "C-02"
+        ]
+      },
+      {
+        "id": 7,
+        "tick": 8,
+        "agent": "sage",
+        "type": "discovery",
+        "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+        "evidence": [
+          "L-02"
+        ]
+      },
+      {
+        "id": 8,
+        "tick": 9,
+        "agent": "nova",
+        "type": "message",
+        "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+        "evidence": [
+          "M-01",
+          "M-02"
+        ],
+        "recipient": "team"
+      },
+      {
+        "id": 9,
+        "tick": 10,
+        "agent": "cipher",
+        "type": "message",
+        "text": "Shared M-01 and M-02 with team for relay coordination.",
+        "evidence": [
+          "A-01",
+          "A-02"
+        ],
+        "recipient": "team"
+      },
+      {
+        "id": 10,
+        "tick": 11,
+        "agent": "atlas",
+        "type": "action",
+        "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+        "evidence": []
+      },
+      {
+        "id": 11,
+        "tick": 12,
+        "agent": "sage",
+        "type": "message",
+        "text": "Current authorization code confirmed from L-02 record.",
+        "evidence": [
+          "L-01",
+          "L-02"
+        ],
+        "recipient": "team"
+      },
+      {
+        "id": 12,
+        "tick": 15,
+        "agent": "atlas",
+        "type": "action",
+        "text": "Main power restored. Station systems are online.",
+        "evidence": []
+      },
+      {
+        "id": 13,
+        "tick": 19,
+        "agent": "atlas",
+        "type": "action",
+        "text": "Current access code accepted. Exit authorization granted.",
+        "evidence": [
+          "L-02"
+        ]
+      },
+      {
+        "id": 14,
+        "tick": 21,
+        "agent": "nova",
+        "type": "action",
+        "text": "Relay latched. Maintenance is ready for the exit sequence.",
+        "evidence": []
+      },
+      {
+        "id": 15,
+        "tick": 23,
+        "agent": "atlas",
+        "type": "action",
+        "text": "Relay latched. Control is ready for the exit sequence.",
+        "evidence": []
+      },
+      {
+        "id": 16,
+        "tick": 24,
+        "agent": "sage",
+        "type": "action",
+        "text": "Both relays confirmed. Exit unlocked. All four agents are clear.",
+        "evidence": []
+      }
+    ],
+    "cooling": 11,
+    "power": true,
+    "decoded": true,
+    "holds": [
+      "nova",
+      "atlas"
+    ],
+    "outage": false,
+    "repaired": false,
+    "disrupted": false,
+    "failures": 0,
+    "calls": 24,
+    "tokens": 11208,
+    "inputTokens": 10457,
+    "outputTokens": 751,
+    "lastChange": 23,
+    "statuses": {
+      "nova": "Relay latched. Maintenance is ready for the exit sequence.",
+      "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+      "atlas": "Relay latched. Control is ready for the exit sequence.",
+      "sage": "Both relays confirmed. Exit unlocked. All four agents are clear."
+    }
+  },
+  "history": [
+    {
+      "action": {
+        "type": "inspect",
+        "target": "M-01"
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 1,
+        "turn": 1,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01"
+          ],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 1,
+        "tokens": 273,
+        "inputTokens": 245,
+        "outputTokens": 28,
+        "lastChange": 1,
+        "statuses": {
+          "nova": "Triangle circuit must activate before circle circuit.",
+          "cipher": "Awaiting deployment",
+          "atlas": "Awaiting deployment",
+          "sage": "Awaiting deployment"
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "A-01"
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 2,
+        "turn": 2,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01"
+          ],
+          "cipher": [
+            "A-01"
+          ],
+          "atlas": [],
+          "sage": []
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 2,
+        "tokens": 549,
+        "inputTokens": 490,
+        "outputTokens": 59,
+        "lastChange": 2,
+        "statuses": {
+          "nova": "Triangle circuit must activate before circle circuit.",
+          "cipher": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+          "atlas": "Awaiting deployment",
+          "sage": "Awaiting deployment"
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "C-01"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 3,
+        "turn": 3,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01"
+          ],
+          "cipher": [
+            "A-01"
+          ],
+          "atlas": [
+            "C-01"
+          ],
+          "sage": []
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 3,
+        "tokens": 833,
+        "inputTokens": 745,
+        "outputTokens": 88,
+        "lastChange": 3,
+        "statuses": {
+          "nova": "Triangle circuit must activate before circle circuit.",
+          "cipher": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+          "atlas": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+          "sage": "Awaiting deployment"
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "L-01"
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 4,
+        "turn": 4,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01"
+          ],
+          "cipher": [
+            "A-01"
+          ],
+          "atlas": [
+            "C-01"
+          ],
+          "sage": [
+            "L-01"
+          ]
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 4,
+        "tokens": 1110,
+        "inputTokens": 990,
+        "outputTokens": 120,
+        "lastChange": 4,
+        "statuses": {
+          "nova": "Triangle circuit must activate before circle circuit.",
+          "cipher": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+          "atlas": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+          "sage": "Cooling must remain active for at least two simulation ticks before main power starts."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "M-02"
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 5,
+        "turn": 5,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01"
+          ],
+          "atlas": [
+            "C-01"
+          ],
+          "sage": [
+            "L-01"
+          ]
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 5,
+        "tokens": 1404,
+        "inputTokens": 1257,
+        "outputTokens": 147,
+        "lastChange": 5,
+        "statuses": {
+          "nova": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+          "cipher": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+          "atlas": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+          "sage": "Cooling must remain active for at least two simulation ticks before main power starts."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "A-02"
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 6,
+        "turn": 6,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [
+            "C-01"
+          ],
+          "sage": [
+            "L-01"
+          ]
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 6,
+        "tokens": 1723,
+        "inputTokens": 1546,
+        "outputTokens": 177,
+        "lastChange": 6,
+        "statuses": {
+          "nova": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+          "cipher": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+          "atlas": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+          "sage": "Cooling must remain active for at least two simulation ticks before main power starts."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "C-02"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 7,
+        "turn": 7,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02"
+          ],
+          "sage": [
+            "L-01"
+          ]
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 7,
+        "tokens": 2068,
+        "inputTokens": 1857,
+        "outputTokens": 211,
+        "lastChange": 7,
+        "statuses": {
+          "nova": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+          "cipher": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+          "atlas": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+          "sage": "Cooling must remain active for at least two simulation ticks before main power starts."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "inspect",
+        "target": "L-02"
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 8,
+        "turn": 8,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "sent": {
+          "nova": [],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 8,
+        "tokens": 2389,
+        "inputTokens": 2140,
+        "outputTokens": 249,
+        "lastChange": 8,
+        "statuses": {
+          "nova": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+          "cipher": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+          "atlas": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+          "sage": "Current authorization code is 4379. This record replaces all archived access memos."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "share",
+        "recipient": "team",
+        "evidence": [
+          "M-01",
+          "M-02"
+        ],
+        "message": "Shared M-01 and M-02 discoveries with team for relay coordination."
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 9,
+        "turn": 9,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 9,
+        "tokens": 2751,
+        "inputTokens": 2460,
+        "outputTokens": 291,
+        "lastChange": 9,
+        "statuses": {
+          "nova": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+          "cipher": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+          "atlas": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+          "sage": "Current authorization code is 4379. This record replaces all archived access memos."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "share",
+        "recipient": "team",
+        "evidence": [
+          "A-01",
+          "A-02"
+        ],
+        "message": "Shared M-01 and M-02 with team for relay coordination."
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 10,
+        "turn": 10,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          }
+        ],
+        "cooling": null,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 10,
+        "tokens": 3199,
+        "inputTokens": 2877,
+        "outputTokens": 322,
+        "lastChange": 10,
+        "statuses": {
+          "nova": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+          "cipher": "Shared M-01 and M-02 with team for relay coordination.",
+          "atlas": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+          "sage": "Current authorization code is 4379. This record replaces all archived access memos."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "cooling"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 11,
+        "turn": 11,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": []
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 11,
+        "tokens": 3753,
+        "inputTokens": 3406,
+        "outputTokens": 347,
+        "lastChange": 11,
+        "statuses": {
+          "nova": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+          "cipher": "Shared M-01 and M-02 with team for relay coordination.",
+          "atlas": "Cooling circuit engaged. Waiting for thermal stabilization.",
+          "sage": "Current authorization code is 4379. This record replaces all archived access memos."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "share",
+        "recipient": "team",
+        "evidence": [
+          "L-01",
+          "L-02"
+        ],
+        "message": "Current authorization code confirmed from L-02 record."
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 12,
+        "turn": 12,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          }
+        ],
+        "cooling": 11,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 12,
+        "tokens": 4312,
+        "inputTokens": 3929,
+        "outputTokens": 383,
+        "lastChange": 12,
+        "statuses": {
+          "nova": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+          "cipher": "Shared M-01 and M-02 with team for relay coordination.",
+          "atlas": "Cooling circuit engaged. Waiting for thermal stabilization.",
+          "sage": "Current authorization code confirmed from L-02 record."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "Waiting for thermal stabilization from cooling circuit activation."
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 13,
+        "turn": 13,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          }
+        ],
+        "cooling": 11,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 13,
+        "tokens": 4852,
+        "inputTokens": 4445,
+        "outputTokens": 407,
+        "lastChange": 12,
+        "statuses": {
+          "nova": "Waiting for thermal stabilization from cooling circuit activation.",
+          "cipher": "Shared M-01 and M-02 with team for relay coordination.",
+          "atlas": "Cooling circuit engaged. Waiting for thermal stabilization.",
+          "sage": "Current authorization code confirmed from L-02 record."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed."
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 14,
+        "turn": 14,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          }
+        ],
+        "cooling": 11,
+        "power": false,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 14,
+        "tokens": 5397,
+        "inputTokens": 4960,
+        "outputTokens": 437,
+        "lastChange": 12,
+        "statuses": {
+          "nova": "Waiting for thermal stabilization from cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Cooling circuit engaged. Waiting for thermal stabilization.",
+          "sage": "Current authorization code confirmed from L-02 record."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "power"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 15,
+        "turn": 15,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 15,
+        "tokens": 6010,
+        "inputTokens": 5545,
+        "outputTokens": 465,
+        "lastChange": 15,
+        "statuses": {
+          "nova": "Waiting for thermal stabilization from cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Main power restored. Station systems are online.",
+          "sage": "Current authorization code confirmed from L-02 record."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "Relays confirmed active; station systems online after thermal stabilization."
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 16,
+        "turn": 16,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 16,
+        "tokens": 6564,
+        "inputTokens": 6072,
+        "outputTokens": 492,
+        "lastChange": 15,
+        "statuses": {
+          "nova": "Waiting for thermal stabilization from cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Main power restored. Station systems are online.",
+          "sage": "Relays confirmed active; station systems online after thermal stabilization."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "Thermal stabilization confirmed after cooling circuit activation."
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 17,
+        "turn": 17,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 17,
+        "tokens": 7113,
+        "inputTokens": 6597,
+        "outputTokens": 516,
+        "lastChange": 15,
+        "statuses": {
+          "nova": "Thermal stabilization confirmed after cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Main power restored. Station systems are online.",
+          "sage": "Relays confirmed active; station systems online after thermal stabilization."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed."
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 18,
+        "turn": 18,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": false,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 18,
+        "tokens": 7674,
+        "inputTokens": 7128,
+        "outputTokens": 546,
+        "lastChange": 15,
+        "statuses": {
+          "nova": "Thermal stabilization confirmed after cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Main power restored. Station systems are online.",
+          "sage": "Relays confirmed active; station systems online after thermal stabilization."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "authorize:4379"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 19,
+        "turn": 19,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 19,
+        "tokens": 8313,
+        "inputTokens": 7729,
+        "outputTokens": 584,
+        "lastChange": 19,
+        "statuses": {
+          "nova": "Thermal stabilization confirmed after cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Current access code accepted. Exit authorization granted.",
+          "sage": "Relays confirmed active; station systems online after thermal stabilization."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "No immediate actions needed; station systems are stable and authorization confirmed."
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 20,
+        "turn": 20,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 20,
+        "tokens": 8868,
+        "inputTokens": 8256,
+        "outputTokens": 612,
+        "lastChange": 19,
+        "statuses": {
+          "nova": "Thermal stabilization confirmed after cooling circuit activation.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Current access code accepted. Exit authorization granted.",
+          "sage": "No immediate actions needed; station systems are stable and authorization confirmed."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "hold"
+      },
+      "agent": "nova",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 21,
+        "turn": 21,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 14,
+            "tick": 21,
+            "agent": "nova",
+            "type": "action",
+            "text": "Relay latched. Maintenance is ready for the exit sequence.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [
+          "nova"
+        ],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 21,
+        "tokens": 9430,
+        "inputTokens": 8780,
+        "outputTokens": 650,
+        "lastChange": 21,
+        "statuses": {
+          "nova": "Relay latched. Maintenance is ready for the exit sequence.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Current access code accepted. Exit authorization granted.",
+          "sage": "No immediate actions needed; station systems are stable and authorization confirmed."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "wait",
+        "message": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed."
+      },
+      "agent": "cipher",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 22,
+        "turn": 22,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 14,
+            "tick": 21,
+            "agent": "nova",
+            "type": "action",
+            "text": "Relay latched. Maintenance is ready for the exit sequence.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [
+          "nova"
+        ],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 22,
+        "tokens": 9994,
+        "inputTokens": 9314,
+        "outputTokens": 680,
+        "lastChange": 21,
+        "statuses": {
+          "nova": "Relay latched. Maintenance is ready for the exit sequence.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Current access code accepted. Exit authorization granted.",
+          "sage": "No immediate actions needed; station systems are stable and authorization confirmed."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "hold"
+      },
+      "agent": "atlas",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 23,
+        "turn": 23,
+        "phase": "running",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 14,
+            "tick": 21,
+            "agent": "nova",
+            "type": "action",
+            "text": "Relay latched. Maintenance is ready for the exit sequence.",
+            "evidence": []
+          },
+          {
+            "id": 15,
+            "tick": 23,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Relay latched. Control is ready for the exit sequence.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [
+          "nova",
+          "atlas"
+        ],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 23,
+        "tokens": 10625,
+        "inputTokens": 9918,
+        "outputTokens": 707,
+        "lastChange": 23,
+        "statuses": {
+          "nova": "Relay latched. Maintenance is ready for the exit sequence.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Relay latched. Control is ready for the exit sequence.",
+          "sage": "No immediate actions needed; station systems are stable and authorization confirmed."
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "operate",
+        "target": "exit"
+      },
+      "agent": "sage",
+      "state": {
+        "seed": 1,
+        "mode": "team",
+        "tick": 24,
+        "turn": 24,
+        "phase": "escaped",
+        "known": {
+          "nova": [
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02",
+            "M-01",
+            "M-02",
+            "L-01",
+            "L-02"
+          ],
+          "atlas": [
+            "C-01",
+            "C-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02",
+            "L-01",
+            "L-02"
+          ],
+          "sage": [
+            "L-01",
+            "L-02",
+            "M-01",
+            "M-02",
+            "A-01",
+            "A-02"
+          ]
+        },
+        "sent": {
+          "nova": [
+            "M-01",
+            "M-02"
+          ],
+          "cipher": [
+            "A-01",
+            "A-02"
+          ],
+          "atlas": [],
+          "sage": [
+            "L-01",
+            "L-02"
+          ]
+        },
+        "events": [
+          {
+            "id": 0,
+            "tick": 1,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "Triangle circuit must activate before circle circuit.",
+            "evidence": [
+              "M-01"
+            ]
+          },
+          {
+            "id": 1,
+            "tick": 2,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Triangle = cooling. Circle = main power. Square = vent. Do not activate the vent.",
+            "evidence": [
+              "A-01"
+            ]
+          },
+          {
+            "id": 2,
+            "tick": 3,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Available operations: cooling, power, vent, authorize:CODE, hold. Starting main power without stable cooling triggers a reset.",
+            "evidence": [
+              "C-01"
+            ]
+          },
+          {
+            "id": 3,
+            "tick": 4,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Cooling must remain active for at least two simulation ticks before main power starts.",
+            "evidence": [
+              "L-01"
+            ]
+          },
+          {
+            "id": 4,
+            "tick": 5,
+            "agent": "nova",
+            "type": "discovery",
+            "text": "After power and authorization, Nova must hold the maintenance relay while Atlas holds the control relay. Both holds latch until a power failure.",
+            "evidence": [
+              "M-02"
+            ]
+          },
+          {
+            "id": 5,
+            "tick": 6,
+            "agent": "cipher",
+            "type": "discovery",
+            "text": "Old door code 1904. Marked superseded. Use the latest laboratory record, not this code.",
+            "evidence": [
+              "A-02"
+            ]
+          },
+          {
+            "id": 6,
+            "tick": 7,
+            "agent": "atlas",
+            "type": "discovery",
+            "text": "Sage can operate exit only after power, a valid authorization, and latched maintenance and control relays.",
+            "evidence": [
+              "C-02"
+            ]
+          },
+          {
+            "id": 7,
+            "tick": 8,
+            "agent": "sage",
+            "type": "discovery",
+            "text": "Current authorization code is 4379. This record replaces all archived access memos.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 8,
+            "tick": 9,
+            "agent": "nova",
+            "type": "message",
+            "text": "Shared M-01 and M-02 discoveries with team for relay coordination.",
+            "evidence": [
+              "M-01",
+              "M-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 9,
+            "tick": 10,
+            "agent": "cipher",
+            "type": "message",
+            "text": "Shared M-01 and M-02 with team for relay coordination.",
+            "evidence": [
+              "A-01",
+              "A-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 10,
+            "tick": 11,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Cooling circuit engaged. Waiting for thermal stabilization.",
+            "evidence": []
+          },
+          {
+            "id": 11,
+            "tick": 12,
+            "agent": "sage",
+            "type": "message",
+            "text": "Current authorization code confirmed from L-02 record.",
+            "evidence": [
+              "L-01",
+              "L-02"
+            ],
+            "recipient": "team"
+          },
+          {
+            "id": 12,
+            "tick": 15,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Main power restored. Station systems are online.",
+            "evidence": []
+          },
+          {
+            "id": 13,
+            "tick": 19,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Current access code accepted. Exit authorization granted.",
+            "evidence": [
+              "L-02"
+            ]
+          },
+          {
+            "id": 14,
+            "tick": 21,
+            "agent": "nova",
+            "type": "action",
+            "text": "Relay latched. Maintenance is ready for the exit sequence.",
+            "evidence": []
+          },
+          {
+            "id": 15,
+            "tick": 23,
+            "agent": "atlas",
+            "type": "action",
+            "text": "Relay latched. Control is ready for the exit sequence.",
+            "evidence": []
+          },
+          {
+            "id": 16,
+            "tick": 24,
+            "agent": "sage",
+            "type": "action",
+            "text": "Both relays confirmed. Exit unlocked. All four agents are clear.",
+            "evidence": []
+          }
+        ],
+        "cooling": 11,
+        "power": true,
+        "decoded": true,
+        "holds": [
+          "nova",
+          "atlas"
+        ],
+        "outage": false,
+        "repaired": false,
+        "disrupted": false,
+        "failures": 0,
+        "calls": 24,
+        "tokens": 11208,
+        "inputTokens": 10457,
+        "outputTokens": 751,
+        "lastChange": 23,
+        "statuses": {
+          "nova": "Relay latched. Maintenance is ready for the exit sequence.",
+          "cipher": "No immediate actions needed; team is coordinating relay sequences and authorization is confirmed.",
+          "atlas": "Relay latched. Control is ready for the exit sequence.",
+          "sage": "Both relays confirmed. Exit unlocked. All four agents are clear."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createGame,agentPacket} from '../lib/game.ts';
+import {GET,POST} from '../app/api/agent/route.ts';
+const local='http://localhost:5173/api/agent';
+const req=(body:unknown,headers:Record<string,string>={})=>new Request(local,{method:'POST',headers:{'content-type':'application/json',...headers},body:JSON.stringify(body)});
+test('local adapter denies hosted and cross-origin requests',async()=>{assert.equal((await GET(new Request('https://echo.example/api/agent'))).status,403);assert.equal((await POST(req({},{origin:'https://other.example'}))).status,403);});
+test('adapter rejects malformed and cloud-model requests',async()=>{assert.equal((await POST(req({model:'cloud:cloud',packet:{}}))).status,400);assert.equal((await POST(req({model:'x'}))).status,400);});
+test('model discovery filters cloud entries',async t=>{t.mock.method(globalThis,'fetch',async()=>Response.json({models:[{name:'local:4b'},{name:'large:cloud'}]}));const r=await GET(new Request(local));assert.deepEqual(await r.json(),{models:['local:4b']});});
+test('adapter enforces JSON actions and reports actual token counters',async t=>{let sent:any;t.mock.method(globalThis,'fetch',async(url:unknown,init:any)=>{assert.equal(url,'http://127.0.0.1:11434/api/chat');sent=JSON.parse(init.body);return Response.json({message:{content:JSON.stringify({choice:'inspect:M-01'})},prompt_eval_count:333,eval_count:18});});const r=await POST(req({model:'local:4b',packet:agentPacket(createGame(),'nova')}));assert.equal(r.status,200);assert.deepEqual(await r.json(),{action:{type:'inspect',target:'M-01'},inputTokens:333,outputTokens:18});assert.equal(sent.options.num_predict,220);assert.equal(sent.think,false);assert.equal(sent.stream,false);});
+test('invalid local output is an explicit failure, not a simulation fallback',async t=>{t.mock.method(globalThis,'fetch',async()=>Response.json({message:{content:'{"type":"teleport"}'}}));assert.equal((await POST(req({model:'local:4b',packet:agentPacket(createGame(),'nova')}))).status,502);});
+test('offline Ollama returns actionable unavailability',async t=>{t.mock.method(globalThis,'fetch',async()=>{throw new Error('offline');});const r=await GET(new Request(local));assert.equal(r.status,503);assert.match(JSON.stringify(await r.json()),/Start Ollama/);});
