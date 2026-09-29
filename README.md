@@ -27,6 +27,7 @@ Open the local URL printed by the server, normally [http://localhost:5173](http:
 ## Play
 
 - **Start mission** at the top of the page runs the team. Pause, advance one turn, or choose 1× / 2× / 4× playback.
+- Use the **Active mission** selector to choose one of three missions. Each mission has its own story, evidence, authorization record, stabilization timing, objectives, and recovery sequence.
 - Drag the 3D scene to orbit; scroll or pinch to zoom. Reset camera restores the initial framing.
 - Select an agent in the scene or its card to inspect its current status.
 - The **Evidence** tab shows discovered clues and how many agents know each one. Clicking an evidence reference in Comms opens that clue.
@@ -34,8 +35,16 @@ Open the local URL printed by the server, normally [http://localhost:5173](http:
 - Change **Agent coordination** to start the same seed with a single controller, independent agents, or a communicating team.
 - **Experiments** computes a deterministic comparison using the same puzzle and action cap.
 - **Replay** scrubs recorded snapshots without model calls. **Export mission log** downloads full JSON state and history.
-- **New scenario** changes the access-code seed; restart preserves it. Layout and puzzle rules remain fixed.
+- **Next mission** advances to the next mission and changes its authorization seed; restart preserves both the current mission and seed.
 - Space toggles playback when focus is outside an interactive control.
+
+## Included missions
+
+- **01 · The Last Signal:** restore a sealed research station, verify its current access code, and coordinate a two-relay escape.
+- **02 · Cryo Breach:** stabilize a warming specimen vault, reject a retired quarantine key, and synchronize both pressure locks.
+- **03 · Solar Blackout:** charge a storm shield, recover the live carrier frequency, align both antenna relays, and transmit through a solar storm.
+
+All three missions use the same constrained agent action model, but their clues, timing requirements, messages, failure recovery, and success conditions are presented as separate scenarios. The selector resets mission state so evidence from one scenario cannot leak into another.
 
 ## Simulation versus actual AI
 

@@ -1,8 +1,8 @@
 import {z} from 'zod';
-const packetSchema=z.object({agent:z.enum(['nova','cipher','atlas','sage']),mode:z.enum(['team','single','independent']),tick:z.number(),unsharedDiscoveries:z.array(z.string()),inspectable:z.array(z.object({id:z.string(),inspected:z.boolean()})),station:z.object({power:z.boolean(),coolingSince:z.number().nullable(),authorized:z.boolean(),relays:z.array(z.string()),outage:z.boolean()})});
+const packetSchema=z.object({agent:z.enum(['nova','cipher','atlas','sage']),mode:z.enum(['team','single','independent']),tick:z.number(),unsharedDiscoveries:z.array(z.string()),inspectable:z.array(z.object({id:z.string(),inspected:z.boolean()})),station:z.object({power:z.boolean(),coolingSince:z.number().nullable(),stabilizationTicks:z.number().int().min(1),authorized:z.boolean(),relays:z.array(z.string()),outage:z.boolean()})});
 export function actionMenu(packet:unknown){const p=packetSchema.parse(packet),s=p.station;const choices=p.inspectable.filter(o=>!o.inspected).map(o=>'inspect:'+o.id);if(p.mode==='team'&&p.unsharedDiscoveries.length)choices.push('share');
  if(p.agent==='nova'&&s.outage&&!p.inspectable.some(o=>o.id==='M-03'&&!o.inspected))choices.push('repair');
- if(p.agent==='atlas'&&!s.outage){if(!s.power){if(s.coolingSince===null)choices.push('cooling');else if(p.tick-s.coolingSince>=1)choices.push('power');}else if(!s.authorized)choices.push('authorize');}
+ if(p.agent==='atlas'&&!s.outage){if(!s.power){if(s.coolingSince===null)choices.push('cooling');else if(p.tick-s.coolingSince>=s.stabilizationTicks-1)choices.push('power');}else if(!s.authorized)choices.push('authorize');}
  if((p.agent==='nova'||p.agent==='atlas')&&s.power&&s.authorized&&!s.relays.includes(p.agent))choices.push('hold');
  if(p.agent==='sage'&&s.power&&s.authorized&&s.relays.includes('nova')&&s.relays.includes('atlas'))choices.push('exit');
  if(!choices.length)choices.push('wait');

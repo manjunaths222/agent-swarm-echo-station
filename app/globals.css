@@ -72,3 +72,4 @@
 @media(max-width:600px){.workspace{height:auto;min-height:0;margin-bottom:0;grid-template-rows:none}.stage{min-height:430px}.mission-panel{min-height:0;overflow:visible}.activity-panel{margin-top:0}.mode-block{padding-top:20px}.start-hint div>span{font-size:10px}.transport .button{font-size:11px}}
 
 .mission-actions{display:flex;gap:9px;align-items:center}@media(max-width:1150px){.mission-actions{flex-direction:column;align-items:stretch}}@media(max-width:600px){.heading-actions{flex-shrink:0}.mission-heading{gap:10px}.mission-actions{gap:6px}}
+.mission-heading h1>span{color:var(--mission-accent,#c3f593)}.mission-heading .tiny-line{background:var(--mission-accent,#c3f593)}.mission-picker{display:grid;gap:8px;margin:18px 0 2px}.mission-picker>label{font:9px monospace;letter-spacing:1.2px;color:#8294a6}.mission-picker .mode-select{margin-top:0}.mission-picker .mode-select>svg:first-child{color:var(--mission-accent,#c3f593)}

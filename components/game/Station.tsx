@@ -6,7 +6,7 @@ import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.j
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
-import {AGENTS,type Game,type AgentId} from '@/lib/game';
+import {AGENTS,scenarioFor,type Game,type AgentId} from '@/lib/game';
 const centers=[[-4.3,-3.7],[4.3,-3.7],[-4.3,3.7],[4.3,3.7]];
 export default function Station({game,selected,onSelect,resetView,links}:{game:Game;selected:AgentId|null;onSelect:(id:AgentId)=>void;resetView:number;links:boolean}){
  const mount=useRef<HTMLDivElement>(null), current=useRef({game,selected,onSelect,resetView,links});current.current={game,selected,onSelect,resetView,links};
@@ -80,7 +80,8 @@ export default function Station({game,selected,onSelect,resetView,links}:{game:G
   box(station,0,.04,0,1.1,.18,14.6,dark);box(station,0,.06,0,16.8,.18,1,dark);
   for(const x of [-.5,.5])box(station,x,.16,0,.025,.02,14,whiteGlow);for(const z of [-.44,.44])box(station,0,.16,z,16.3,.02,.025,whiteGlow);
   cylinder(station,0,.23,0,1.15,.45,dark);cylinder(station,0,.5,0,.95,.1,steel);cylinder(station,0,1.05,0,.3,1.05,whiteGlow);
-  const core=mesh(new THREE.IcosahedronGeometry(.65,1),new THREE.MeshStandardMaterial({color:'#9befff',emissive:'#56cfff',emissiveIntensity:2,wireframe:true}),station,0,1.8,0);
+  const coreMaterial=new THREE.MeshStandardMaterial({color:'#9befff',emissive:'#56cfff',emissiveIntensity:2,wireframe:true});
+  const core=mesh(new THREE.IcosahedronGeometry(.65,1),coreMaterial,station,0,1.8,0);
   const rings:THREE.Mesh[]=[];for(let i=0;i<3;i++){const r=mesh(new THREE.TorusGeometry(.95+i*.16,.018,8,80),whiteGlow,station,0,1.7,0);r.rotation.x=Math.PI/2+i*.5;rings.push(r);}
   const exit=new THREE.Group();exit.position.set(0,.25,7.05);station.add(exit);box(exit,0,1,0,1.9,2.2,.4,dark);const door=box(exit,0,1,.23,1.45,1.8,.08,steel);box(exit,-.89,1,.28,.07,2.1,.08,whiteGlow);box(exit,.89,1,.28,.07,2.1,.08,whiteGlow);
   // Subtle orbital stars.
@@ -96,7 +97,7 @@ export default function Station({game,selected,onSelect,resetView,links}:{game:G
    bots.forEach((b,i)=>{const a=AGENTS[i],active=g.phase==='running'&&g.turn%4===i;const target=g.phase==='escaped'?new THREE.Vector3(-1.1+i*.73,0,8.3):new THREE.Vector3(centers[i][0]+.7+(active?.15:0),0,centers[i][1]+1);b.position.lerp(target,.045);b.position.y=reduced?0:Math.sin(t*2+i)*.035;b.rotation.y=g.phase==='escaped'?0:Math.sin(t*.25+i)*.25;halos[i].scale.setScalar(s===a.id?1.4:active?1.15:1);beacons[i].intensity=g.outage?3:g.power?18:9;});
    door.position.x=THREE.MathUtils.lerp(door.position.x,g.phase==='escaped'?1.4:0,.045);
    const latest=g.events.at(-1);if(latest&&latest.id!==lastEvent){lastEvent=latest.id;if(latest.type==='message'){messageAt=t;messageFrom=AGENTS.findIndex(a=>a.id===latest.agent);}}connections.visible=l&&g.mode==='team'&&g.events.some(e=>e.type==='message');pulses.forEach((p,i)=>{p.mesh.visible=t-messageAt<4&&!reduced;const progress=((t-messageAt)*.5)%1;p.mesh.position.copy(p.curve.getPoint(Math.max(0,i===messageFrom?progress:1-progress)));});
-   whiteGlow.emissive.set(g.outage?'#ff714f':g.phase==='escaped'?'#a8ff86':'#6dcfff');controls.update();composer.render();};animate();
+   const missionColor=scenarioFor(g.scenario).accent;whiteGlow.emissive.set(g.outage?'#ff714f':g.phase==='escaped'?'#a8ff86':missionColor);coreMaterial.emissive.set(missionColor);coreMaterial.color.set(missionColor);controls.update();composer.render();};animate();
   return()=>{cancelAnimationFrame(frame);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('pointerdown',pointerDown);renderer.domElement.removeEventListener('click',click);scene.traverse(o=>{if(o instanceof THREE.Mesh||o instanceof THREE.Points){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}if(o instanceof THREE.Sprite){o.material.map?.dispose();o.material.dispose();}});composer.dispose();renderer.dispose();renderer.domElement.remove();};
  },[]);
  return <div className="station-canvas" ref={mount} role="img" aria-label="Interactive 3D cutaway of ECHO station. Four rooms contain agents and clues. Drag to orbit, scroll to zoom. Agent details are also available in the cards below.">{error&&<div className="webgl-error">3D rendering is unavailable in this browser. The mission controls and evidence panels still work.</div>}</div>;
