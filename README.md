@@ -1,6 +1,17 @@
-# ECHO Station — The Last Signal
+# Agent Swarm: ECHO Station
 
-A local-first, interactive 3D escape room for demonstrating agent coordination. Four agents explore separate rooms, share evidence, restore power, reconcile an obsolete door code, and coordinate a two-relay exit. No paid API keys, external art assets, or cloud model calls are required.
+**The Last Signal** is a local-first, interactive 3D escape room that makes multi-agent coordination visible. Four specialized agents explore separate rooms, exchange evidence, restore power, reject an obsolete access code, and synchronize a two-relay escape.
+
+The built-in deterministic simulation runs with zero inference tokens. For a real agent run, connect a local Ollama model—no paid API keys, cloud model calls, or external art assets are required.
+
+## What this demonstrates
+
+- **Private knowledge:** each agent begins with access only to evidence discovered in its assigned room.
+- **Evidence handoffs:** agents send discoveries to the team and build shared context over time.
+- **Coordinated execution:** restoring power and opening the exit require actions from different roles in the correct order.
+- **Fault recovery:** inject a relay failure and watch agents discover a bypass, restore the station, and resume the plan.
+- **Fair comparisons:** run communicating, independent, and centralized control modes against the same puzzle seed and action limits.
+- **Measured local inference:** Ollama token counts, calls, turns, and validated actions are recorded without sending data to a hosted model.
 
 ## Run
 
@@ -11,11 +22,11 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by the server (normally http://localhost:5173). The simulation works immediately. Dependencies require an internet connection for the initial install; the game has no external asset or font dependencies.
+Open the local URL printed by the server, normally [http://localhost:5173](http://localhost:5173). The simulation works immediately. Dependencies require an internet connection for the initial install; the game itself has no external asset or font dependencies.
 
 ## Play
 
-- **Start mission** runs the team. Pause, advance one turn, or choose 1× / 2× / 4× playback.
+- **Start mission** at the top of the page runs the team. Pause, advance one turn, or choose 1× / 2× / 4× playback.
 - Drag the 3D scene to orbit; scroll or pinch to zoom. Reset camera restores the initial framing.
 - Select an agent in the scene or its card to inspect its current status.
 - The **Evidence** tab shows discovered clues and how many agents know each one. Clicking an evidence reference in Comms opens that clue.
@@ -23,7 +34,7 @@ Open the local URL printed by the server (normally http://localhost:5173). The s
 - Change **Agent coordination** to start the same seed with a single controller, independent agents, or a communicating team.
 - **Experiments** computes a deterministic comparison using the same puzzle and action cap.
 - **Replay** scrubs recorded snapshots without model calls. **Export mission log** downloads full JSON state and history.
-- **New mission** changes the access-code seed; restart preserves it. Layout and puzzle rules remain fixed.
+- **New scenario** changes the access-code seed; restart preserves it. Layout and puzzle rules remain fixed.
 - Space toggles playback when focus is outside an interactive control.
 
 ## Simulation versus actual AI
